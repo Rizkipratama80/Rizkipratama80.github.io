@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Rezpecto Resto | The Curated Hearth</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <!-- Library untuk Grafik -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+        }
+        
+        h1,
+        h2,
+        h3,
+        .serif-font {
+            font-family: 'Noto Serif', serif;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        
+        #secret-menu {
+            display: none;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        #secret-menu.show {
+            display: grid;
+            opacity: 1;
+            animation: fadeIn 0.6s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #0f1a14;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: #7c5730;
+            border-radius: 10px;
+        }
+    </style>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f1a14",
+                        "secondary": "#a67c52",
+                        "on-primary": "#f8f1e7",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#d4a373",
+                        "on-secondary-container": "#2d1b0d",
+                        "background": "#0f1a14",
+                        "on-background": "#f8f1e7",
+                        "surface-container-low": "#16241c",
+                        "surface-container-lowest": "#1c2e24"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background">
+    <div class="fixed top-2 left-4 z-[60] pointer-events-none">
+        <div class="w-14 h-14 bg-white/5 rounded-full backdrop-blur flex items-center justify-center border border-white/10">
+            <span class="material-symbols-outlined text-secondary text-4xl">stars</span>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 bg-primary/80 nav-blur border-b border-white/5 shadow-2xl">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-3">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center overflow-hidden border border-secondary/30">
+                    <img src="WhatsApp_Image_2026-05-07_at_07.35.20-removebg-preview.png" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <div class="text-2xl font-bold tracking-tight text-on-primary">Rezpecto <span class="text-secondary">Resto</span></div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-on-primary/70 hover:text-secondary transition-colors font-medium" href="#menu">Menu</a>
+                <a class="text-on-primary/70 hover:text-secondary transition-colors font-medium" href="#about">Tentang</a>
+                <a class="text-on-primary/70 hover:text-secondary transition-colors font-medium" href="#sales-report">Laporan</a>
+                <a class="text-on-primary/70 hover:text-secondary transition-colors font-medium" href="#testimonials">Testimoni</a>
+            </div>
+
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:scale-105 hover:bg-secondary-container transition-all text-sm uppercase tracking-wide">
+                pesan sekarang
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/20 z-10"></div>
+            <img class="w-full h-full object-cover" alt="Hero Steak" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" />
+        </div>
+        <div class="relative z-20 max-w-7xl mx-auto px-8">
+            <div class="max-w-2xl space-y-8">
+                <div class="inline-flex px-4 py-2 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-sm font-bold uppercase tracking-widest">
+                    The Curated hearth
+                </div>
+                <h1 class="text-5xl md:text-7xl text-white font-bold leading-tight">
+                    Nikmati Rasa Hidangan dalam <span class="italic font-normal text-secondary">Kehangatan</span> Resto.
+                </h1>
+                <p class="text-lg text-gray-300">Restoran populer di indonesia dengan tempat yang indah dan suasana yang nyaman untuk keluarga, pasangan dan teman.</p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#menu" class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg group flex items-center shadow-xl hover:bg-secondary/90 transition-all">
+                        Lihat Menu Makanan
+                        <span class="material-symbols-outlined ml-2 group-hover:translate-y-1 transition-transform">restaurant_menu</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Menu Section -->
+    <section class="py-24 bg-surface-container-low" id="menu">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="mb-12">
+                <h2 class="text-4xl font-bold text-on-primary mb-4">Menu Unggulan Kami</h2>
+                <p class="text-gray-400">Klik tombol (+) untuk memesan makanan yang di sediakan restoran kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Item 1 -->
+                <div class="group bg-primary p-4 rounded-2xl border border-white/5 shadow-xl hover:border-secondary/50 transition-all hover:-translate-y-2">
+                    <div class="relative h-64 mb-6 overflow-hidden rounded-xl">
+                        <img class="w-full h-full object-cover transition-transform group-hover:scale-110" src="https://akcdn.detik.net.id/visual/2021/09/24/steak_11.jpeg?w=480&q=90" alt="Premium Steak" />
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">FAVORIT</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-on-primary">Steak wagyu A5</h3>
+                    <p class="text-sm text-gray-400 mb-4">Daging sapi Jepang dengan marbling melimpah dan rasa gurih seperti mentega.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-secondary">Rp 185.000</span>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Steak Wagyu A5." target="_blank" class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">add</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="group bg-primary p-4 rounded-2xl border border-white/5 shadow-xl hover:border-secondary/50 transition-all hover:-translate-y-2">
+                    <div class="relative h-64 mb-6 overflow-hidden rounded-xl">
+                        <img class="w-full h-full object-cover transition-transform group-hover:scale-110" src="https://sufarm.id/storage/2024/10/Creamy-Mushroom-Pasta-Wide.webp" />
+                    </div>
+                    <h3 class="text-xl font-bold text-on-primary">Creamy Pasta</h3>
+                    <p class="text-sm text-gray-400 mb-4">Saus kental dan lembut dengan bahan dasar susu, krim, dan keju pilihan dengan topping ayam.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-secondary">Rp 40.000</span>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Creamy Pasta." target="_blank" class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">add</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="group bg-primary p-4 rounded-2xl border border-white/5 shadow-xl hover:border-secondary/50 transition-all hover:-translate-y-2">
+                    <div class="relative h-64 mb-6 overflow-hidden rounded-xl">
+                        <img class="w-full h-full object-cover transition-transform group-hover:scale-110" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=480" alt="Signature Coffee" />
+                    </div>
+                    <h3 class="text-xl font-bold text-on-primary">Signature Coffee</h3>
+                    <p class="text-sm text-gray-400 mb-4">Minuman kopi andalan dengan karakter rasa unik khas Rezpecto.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-secondary">Rp 17.500</span>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Signature Coffee." target="_blank" class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">add</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="group bg-primary p-4 rounded-2xl border border-white/5 shadow-xl hover:border-secondary/50 transition-all hover:-translate-y-2">
+                    <div class="relative h-64 mb-6 overflow-hidden rounded-xl">
+                        <img class="w-full h-full object-cover transition-transform group-hover:scale-110" src="https://media-order.bkdelivery.co.id/thumb/product_photo/2024/11/11/knpadksbacn7igdbnuwa6l_product_details.webp" alt="Burgerking Package" />
+                    </div>
+                    <h3 class="text-xl font-bold text-on-primary">1 Paket Burger</h3>
+                    <p class="text-sm text-gray-400 mb-4">Sajian 1 paket burgerking yang sangat enak dan berkualitas daging premium.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-secondary">Rp 40.000</span>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan 1 Paket Burgerking." target="_blank" class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">add</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toggle Button -->
+            <div class="mt-16 text-center">
+                <button onclick="toggleSecretMenu(event)" class="text-on-primary/60 hover:text-secondary transition-all text-base font-semibold flex items-center justify-center gap-2 mx-auto group bg-secondary/10 px-8 py-3 rounded-full border border-secondary/20">
+                    <span id="eye-icon" class="material-symbols-outlined group-hover:scale-110 transition-transform">visibility</span>
+                    <span id="btn-text">Lihat Menu Sekarang</span>
+                </button>
+            </div>
+
+            <!-- SECRET MENU START -->
+            <div id="secret-menu" class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 border-t border-dashed border-secondary/30 pt-12">
+                <div class="group bg-surface-container-lowest p-6 rounded-3xl shadow-2xl flex flex-col md:flex-row gap-6 items-center border border-secondary/10">
+                    <img class="w-32 h-32 object-cover rounded-2xl shadow-lg border-2 border-secondary/10" src="https://mocktail.net/wp-content/uploads/2021/05/Matcha-Iced-Latte_ig.jpg" alt="Matcha Latte" />
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-secondary">Es Matcha Latte</h3>
+                            <span class="text-lg font-bold text-secondary-container">Rp 17.000</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4 italic">Matcha Jepang berkualitas yang dicampur susu segar.</p>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Es Matcha Latte." target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-secondary hover:text-on-primary transition-colors">
+                            Pesan Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="group bg-surface-container-lowest p-6 rounded-3xl shadow-2xl flex flex-col md:flex-row gap-6 items-center border border-secondary/10">
+                    <img class="w-32 h-32 object-cover rounded-2xl shadow-lg border-2 border-secondary/10" src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=300" alt="Nasi Goreng Udang" />
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-secondary">Nasi Goreng Udang</h3>
+                            <span class="text-lg font-bold text-secondary-container">Rp 20.000</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4 italic">Nasi pera, udang segar, telur, dan bumbu spesial.</p>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Nasi Goreng Udang." target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-secondary hover:text-on-primary transition-colors">
+                            Pesan Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="group bg-surface-container-lowest p-6 rounded-3xl shadow-2xl flex flex-col md:flex-row gap-6 items-center border border-secondary/10">
+                    <img class="w-32 h-32 object-cover rounded-2xl shadow-lg border-2 border-secondary/10" src="https://dapoernde.com/wp-content/uploads/2025/12/Bebek-Bakar-Bumbu-Hitam-by-dapoer-nde.webp" alt="Bebek Bakar" />
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-secondary">Bebek Bumbu Hitam</h3>
+                            <span class="text-lg font-bold text-secondary-container">Rp 30.000</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4 italic">Bebek Madura empuk bumbu rempah pekat.</p>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Bebek Bakar Bumbu Hitam." target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-secondary hover:text-on-primary transition-colors">
+                            Pesan Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="group bg-surface-container-lowest p-6 rounded-3xl shadow-2xl flex flex-col md:flex-row gap-6 items-center border border-secondary/10">
+                    <img class="w-32 h-32 object-cover rounded-2xl shadow-lg border-2 border-secondary/10" src="https://pasinaja.id/storage/app/public/product/2024-05-13-6641d7dc64107.png" alt="Nasi Bakar" />
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-secondary">Nasi Bakar Kemangi</h3>
+                            <span class="text-lg font-bold text-secondary-container">Rp 25.000</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4 italic">Nasi gurih daun pisang isian ayam suwir.</p>
+                        <a href="https://wa.me/6282342740914?text=Halo Rezpecto Resto, saya ingin memesan Nasi Bakar Ayam Suwir Kemangi." target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-secondary hover:text-on-primary transition-colors">
+                            Pesan Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- SECRET MENU END -->
+        </div>
+    </section>
+
+    <!-- NEW SECTION: SALES CHART -->
+    <section class="py-24 bg-primary" id="sales-report">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3 space-y-6">
+                    <h3 class="text-secondary font-bold tracking-widest uppercase text-sm">Data & Analisis</h3>
+                    <h2 class="text-4xl font-bold text-on-primary">Grafik Penjualan <span class="italic font-normal text-secondary">Mingguan</span></h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Kami sangat bangga dengan pertumbuhan konstan menu favorit kami. Data ini membantu tim chef kami untuk selalu menyajikan bahan terbaik di hari-hari tersibuk.
+                    </p>
+                    <div class="flex items-center gap-3 text-secondary">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <span class="font-bold text-lg">+12% Peningkatan dari minggu lalu</span>
+                    </div>
+                </div>
+                <!-- Container Grafik -->
+                <div class="lg:w-2/3 w-full bg-surface-container-low p-6 rounded-3xl border border-white/5 shadow-2xl">
+                    <canvas id="salesChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-24 bg-surface-container-lowest" id="about">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-secondary/20 transform hover:scale-[1.02] transition-transform duration-500">
+                        <img class="w-full aspect-square object-cover" src="https://nibble-images.b-cdn.net/nibble/original_images/restoran-paling-cozy-di-jakarta-01.jpg?class=large" alt="Interior Resto" />
+                    </div>
+                </div>
+                <div class="lg:w-1/2 space-y-6">
+                    <h3 class="text-secondary font-bold tracking-widest uppercase text-sm">Tentang Kami</h3>
+                    <h2 class="text-4xl md:text-5xl font-bold text-on-primary">Lebih dari Sekadar <span class="italic font-normal text-secondary">Restoran.</span></h2>
+                    <div class="w-20 h-1.5 bg-secondary rounded-full"></div>
+                    <p class="text-gray-300 leading-relaxed text-lg">Berawal dari sebuah dapur kecil, <span class="font-bold text-secondary">Rezpecto Resto</span> hadir untuk merayakan setiap momen berharga Anda dengan bahan premium pilihan.</p>
+                    <div class="grid grid-cols-2 gap-8 pt-6">
+                        <div class="border-l-4 border-secondary pl-4">
+                            <div class="text-2xl font-bold text-on-primary">100%</div>
+                            <div class="text-sm text-gray-500">Bahan premium</div>
+                        </div>
+                        <div class="border-l-4 border-secondary pl-4">
+                            <div class="text-2xl font-bold text-on-primary">2018</div>
+                            <div class="text-sm text-gray-500">Sejak Didirikan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Stats Section -->
+    <section class="py-24 bg-primary" id="visit-stats">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h3 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Popularitas</h3>
+            <h2 class="text-4xl font-bold mb-4">Statistik Kunjungan Pelanggan</h2>
+            <div class="w-20 h-1.5 bg-secondary rounded-full mx-auto mb-12"></div>
+            <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-12">
+                Terima kasih atas antusiasme Anda! Kami terus berkembang dan menjadi pilihan utama bagi <span class="text-secondary font-bold">15,000+ pelanggan</span> setiap bulannya.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- BOX RATING KEPUASAN -->
+                <div class="p-8 bg-surface-container-low rounded-3xl border border-secondary/30 backdrop-blur-sm scale-105">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-4">thumb_up</span>
+                    <div class="text-4xl font-bold text-on-primary mb-2">98%</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-widest">Rating Kepuasan</div>
+                </div>
+                <!-- BOX MENU PILIHAN -->
+                <div class="p-8 bg-surface-container-low rounded-3xl border border-white/5 backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-4">restaurant</span>
+                    <div class="text-4xl font-bold text-on-primary mb-2">25+</div>
+                    <div class="text-sm text-gray-500 uppercase tracking-widest">Menu Pilihan</div>
+                </div>
+                <!-- BOX TOTAL PENGUNJUNG -->
+                <div class="p-8 bg-primary rounded-3xl border border-secondary/20 backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-4">analytics</span>
+                    <div id="total-visitor-count" class="text-4xl font-bold text-on-primary mb-2">0</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Total Pengunjung</div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-surface-container-low" id="testimonials">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Suara Pelanggan</h3>
+                <h2 class="text-4xl font-bold text-on-primary">Apa Kata Mereka?</h2>
+                <div class="w-20 h-1.5 bg-secondary rounded-full mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-primary p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 mb-4">
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"Steak Wagyu A5-nya benar-benar juara! Lumer di mulut dan suasananya sangat homey."</p>
+                    </div>
+                    <p class="font-bold text-secondary">Galang</p>
+                </div>
+                <div class="bg-primary p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 mb-4">
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"Nyobain Nasi Bakar Ayam Suwir di sini aromanya wangi banget. Pelayanannya cepat."</p>
+                    </div>
+                    <p class="font-bold text-secondary">Luis Figo</p>
+                </div>
+                <div class="bg-primary p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 mb-4">
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                            <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1">star</span>
+                        </div>
+                        <p class="text-gray-300 italic mb-6">"Signature Coffee-nya punya karakter rasa yang unik. Tempatnya asik buat nongkrong."</p>
+                    </div>
+                    <p class="font-bold text-secondary">Felinda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 text-center border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-2xl font-bold mb-2 text-secondary">Rezpecto Resto</p>
+            <p class="text-gray-500 italic mb-4">"The Curated Hearth"</p>
+            <p class="text-xs text-gray-600">© 2026 Rezpecto Resto. Hubungi: +62 823-4274-0914</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk menghitung total pengunjung
+        function updateTotalVisitors() {
+            let totalVisitors = localStorage.getItem('totalVisitors') || 0;
+            totalVisitors = parseInt(totalVisitors) + 1;
+            localStorage.setItem('totalVisitors', totalVisitors);
+            document.getElementById('total-visitor-count').innerText = totalVisitors;
+        }
+
+        // Fungsi untuk increment otomatis total pengunjung
+        function autoIncrementVisitors() {
+            setInterval(() => {
+                updateTotalVisitors();
+            }, 30000); // Increment setiap 30 detik
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.addEventListener('load', function() {
+            updateTotalVisitors();
+            autoIncrementVisitors();
+        });
+
+        // Fungsi Toggle Menu Rahasia
+        function toggleSecretMenu(event) {
+            const menu = document.getElementById('secret-menu');
+            const eyeIcon = document.getElementById('eye-icon');
+            const btnText = document.getElementById('btn-text');
+
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                eyeIcon.innerText = 'visibility';
+                btnText.innerText = 'Lihat Menu Sekarang';
+                setTimeout(() => {
+                    if (!menu.classList.contains('show')) menu.style.display = 'none';
+                }, 500);
+            } else {
+                menu.style.display = 'grid';
+                menu.offsetHeight;
+                menu.classList.add('show');
+                eyeIcon.innerText = 'visibility_off';
+                btnText.innerText = 'Tutup Menu';
+                setTimeout(() => {
+                    menu.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 150);
+            }
+        }
+
+        // Inisialisasi Grafik Penjualan
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
+                datasets: [{
+                    label: 'Porsi Terjual',
+                    data: [120, 150, 180, 170, 240, 380, 420], // Contoh Data
+                    borderColor: '#a67c52', // Warna Secondary (Bronze)
+                    backgroundColor: 'rgba(166, 124, 82, 0.2)', // Bronze Transparan
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4, // Membuat garis melengkung lembut
+                    pointBackgroundColor: '#f8f1e7',
+                    pointBorderColor: '#a67c52',
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#f8f1e7', // Warna teks putih gading
+                            font: {
+                                family: 'Plus Jakarta Sans',
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        ticks: {
+                            color: '#f8f1e7'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#f8f1e7'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
